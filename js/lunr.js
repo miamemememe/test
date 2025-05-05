@@ -105,7 +105,7 @@ lunr.FieldRef = function (docRef, fieldName, stringValue) {
   this._stringValue = stringValue
 }
 
-lunr.FieldRef.joiner = "/"
+lunr.FieldRef.joiner = "/test/"
 
 lunr.FieldRef.fromString = function (s) {
   var n = s.indexOf(lunr.FieldRef.joiner)
@@ -1826,7 +1826,7 @@ lunr.Index.prototype.query = function (fn) {
           var field = clause.fields[k],
               fieldPosting = posting[field],
               matchingDocumentRefs = Object.keys(fieldPosting),
-              termField = expandedTerm + "/" + field
+              termField = expandedTerm + "/test/" + field
 
           /*
            * To support field level boosts a query vector is created per

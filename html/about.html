@@ -11,15 +11,15 @@
     <link rel="icon" href="../images/logo.png">
 
     <title>About | AAA</title>
-    <meta name="generator" content="Jekyll v4.4.1" />
-    <meta property="og:title" content="About" />
-    <meta property="og:locale" content="en_US" />
-    <meta name="description" content="aaa" />
-    <meta property="og:description" content="aaa" />
-    <meta property="og:site_name" content="AAA" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
-    <meta property="twitter:title" content="About" />
+    <meta name="generator" content="Jekyll v4.4.1">
+    <meta property="og:title" content="About">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="aaa">
+    <meta property="og:description" content="aaa">
+    <meta property="og:site_name" content="AAA">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta property="twitter:title" content="About">
     <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","description":"aaa","headline":"About","name":"AAA","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"../images/logo.png"}},"url":"../about/"}</script>
 
@@ -55,6 +55,28 @@
             top: 0;
             border: 1px dashed #8b1010;
             cursor: crosshair;
+        }
+
+        .lunrsearchresult .title {
+            color: #d9230f;
+        }
+
+        .lunrsearchresult .url {
+            color: silver;
+        }
+
+        .lunrsearchresult a {
+            display: block;
+            color: #777;
+        }
+
+        .lunrsearchresult a:hover,
+        .lunrsearchresult a:focus {
+            text-decoration: none;
+        }
+
+        .lunrsearchresult a:hover .title {
+            text-decoration: underline;
         }
     </style>
 
@@ -94,43 +116,15 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/html/detail.html">Details
+                        <a class="nav-link" href="/test/html/detail.html">Details
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/html/about.html">About</a>
+                        <a class="nav-link" href="/test/html/about.html">About</a>
                     </li>
 
-
-
                     <script src="../js/lunr.js"></script>
-
-
-                    <style>
-                        .lunrsearchresult .title {
-                            color: #d9230f;
-                        }
-
-                        .lunrsearchresult .url {
-                            color: silver;
-                        }
-
-                        .lunrsearchresult a {
-                            display: block;
-                            color: #777;
-                        }
-
-                        .lunrsearchresult a:hover,
-                        .lunrsearchresult a:focus {
-                            text-decoration: none;
-                        }
-
-                        .lunrsearchresult a:hover .title {
-                            text-decoration: underline;
-                        }
-                    </style>
-
 
                     <form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
                         <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q"
