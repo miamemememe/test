@@ -8,16 +8,16 @@
     <link rel="icon" href="./images/logo.png">
 
     <title>Home | AAA</title>
-    <meta name="generator" content="Jekyll v4.4.1" >
-    <meta property="og:title" content="Home" >
-    <meta property="og:locale" content="en_US" >
-    <meta name="description" content="aaa" >
-    <meta property="og:description" content="aaa" >
-    <meta property="og:site_name" content="AAA" >
-    <meta property="og:type" content="website" >
-    <link rel="next" href="/test/page2/" >
-    <meta name="twitter:card" content="summary" >
-    <meta property="twitter:title" content="Home" >
+    <meta name="generator" content="Jekyll v4.4.1">
+    <meta property="og:title" content="Home">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="aaa">
+    <meta property="og:description" content="aaa">
+    <meta property="og:site_name" content="AAA">
+    <meta property="og:type" content="website">
+    <link rel="next" href="/test/page2/">
+    <meta name="twitter:card" content="summary">
+    <meta property="twitter:title" content="Home">
     <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","description":"aaa","headline":"Home","name":"AAA","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"./images/logo.png"}},"url":"/test/"}</script>
 
@@ -54,7 +54,23 @@
             text-decoration: underline;
         }
     </style>
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+        /* 新增自定义容器样式 */
+        #unity-container {
+            position: relative;
+            margin: 20px auto;
+            max-width: 960px;
+        }
 
+        /* 响应式适配 */
+        @media (max-width: 960px) {
+            #unity-canvas {
+                width: 100% !important;
+                height: auto !important;
+            }
+        }
+    </style>
 </head>
 
 
@@ -66,16 +82,16 @@
             integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     </noscript>
 
-    
+
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
 
         <div class="container pr-0">
 
-            
+
             <a class="navbar-brand" href="/test/">
                 <img src="./images/logo.png" alt="AAA">
             </a>
-            
+
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,7 +100,7 @@
 
             <div class="collapse navbar-collapse" id="navbarMediumish">
 
-                
+
 
                 <ul class="navbar-nav ml-auto">
 
@@ -112,7 +128,7 @@
 
                     <form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
                         <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q"
-                            maxlength="255" value="" placeholder="Type and enter..." >
+                            maxlength="255" value="" placeholder="Type and enter...">
                     </form>
 
                     <div id="lunrsearchresults">
@@ -129,13 +145,13 @@
 
         </div>
     </nav>
-    
+
 
 
     <div class="site-content">
 
         <div class="container">
-            
+
 
             <div class="mainheading">
                 <h1 class="sitetitle">未来教育</h1>
@@ -143,7 +159,7 @@
                     aaa
                 </p>
             </div>
-            
+
             <div class="main-content">
 
                 <section id="gallery" class="container">
@@ -169,7 +185,7 @@
 
                     <div class="row listrecent">
 
-                        
+
                         <div class="col-md-6 mb-30px">
                             <div class="listfeaturedtag h-100">
                                 <div class="row h-100">
@@ -178,13 +194,13 @@
                                             <div class="wrapthumbnail">
                                                 <a href="/test/BBB/">
 
-                                                    <img class="featured-box-img-cover"
-                                                        src="./images/image_0.jpg">
+                                                    <img class="featured-box-img-cover" src="./images/image_0.jpg">
 
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-12 col-md-12 col-lg-7">
                                         <div class="h-100 card-group">
                                             <div class="card">
@@ -226,8 +242,7 @@
                                             <div class="wrapthumbnail">
                                                 <a href="/test/CCC/">
 
-                                                    <img class="featured-box-img-cover"
-                                                        src="./images/image_1.jpg">
+                                                    <img class="featured-box-img-cover" src="./images/image_1.jpg">
 
                                                 </a>
                                             </div>
@@ -267,7 +282,7 @@
                         </div>
 
                         <h1 style="display: flex; justify-content: center; width: 100%"> -repeat- </h1>
-                   
+
                         <br><br><br>
 
 
@@ -298,8 +313,8 @@
 
                     </span>
                 </div>
-                
-               
+
+
 
             </div>
 
@@ -308,10 +323,67 @@
 
 
         </div>
+        <br><br><br><br><br><br><br><br><br>
+        <div id="unity-container" class="unity-desktop">
+            <canvas id="unity-canvas" width=auto height=auto tabindex="-1"></canvas>
+            <div id="unity-loading-bar">
+                <div id="unity-logo"></div>
+                <div id="unity-progress-bar-empty">
+                    <div id="unity-progress-bar-full"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <script>
+    // 修改后的初始化脚本（防止全局污染）
+    (function() {
+        const container = document.querySelector("#unity-container");
+        const canvas = document.querySelector("#unity-canvas");
+        const loadingBar = document.querySelector("#unity-loading-bar");
+        const progressBarFull = document.querySelector("#unity-progress-bar-full");
+        const fullscreenButton = document.querySelector("#unity-fullscreen-button");
+        const warningBanner = document.querySelector("#unity-warning");
 
+        const config = {
+            dataUrl: "Build/Test.data",
+            frameworkUrl: "Build/Test.framework.js",
+            codeUrl: "Build/Test.wasm",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "DefaultCompany",
+            productName: "EmptyTest1.0",
+            productVersion: "0.1",
+            showBanner: function(msg, type) {
+                // 保持原有的banner显示逻辑
+            }
+        };
 
-    </div> 
+        // 自动适配移动端
+        if (/Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(navigator.userAgent)) {
+            const meta = document.createElement('meta');
+            meta.name = 'viewport';
+            meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+            document.head.appendChild(meta);
+            
+            container.classList.add("unity-mobile");
+            canvas.classList.add("unity-mobile");
+            canvas.style.width = "100%";
+            canvas.style.height = "auto";
+        }
 
+        // 动态加载Loader
+        const script = document.createElement("script");
+        script.src = "Build/Test.loader.js";
+        script.onload = () => {
+            createUnityInstance(canvas, config, (progress) => {
+                progressBarFull.style.width = 100 * progress + "%";
+            }).then((unityInstance) => {
+                loadingBar.style.display = "none";
+                fullscreenButton.onclick = () => unityInstance.SetFullscreen(1);
+            });
+        };
+        document.body.appendChild(script);
+    })();
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
