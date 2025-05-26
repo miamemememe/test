@@ -60,8 +60,8 @@
     <style>
         #unity-container {
             position: relative;
-            margin: 20px auto;
-            max-width: 960px;
+            margin: 150px 0px 0px 0px ;
+            width: 80%;
         }
 
         @media (max-width: 960px) {
@@ -174,7 +174,7 @@
                 </section>
 
 
-<!-- 
+                <!-- 
                 <section class="recent-posts">
 
                     <div class="section-title">
@@ -323,7 +323,9 @@
 
 
         </div> -->
-        <br><br><br><br><br><br><br><br><br>
+
+            </div>
+        </div>
         <div id="unity-container" class="unity-desktop">
             <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
             <div id="unity-loading-bar">
@@ -334,80 +336,81 @@
             </div>
             <div id="unity-warning"></div>
         </div>
+        <script>
+            (function () {
+                const container = document.querySelector("#unity-container");
+                const canvas = document.querySelector("#unity-canvas");
+                const loadingBar = document.querySelector("#unity-loading-bar");
+                const progressBarFull = document.querySelector("#unity-progress-bar-full");
+                const fullscreenButton = document.querySelector("#unity-fullscreen-button");
+                const warningBanner = document.querySelector("#unity-warning");
+
+                function unityShowBanner(msg, type) {
+                    function updateBannerVisibility() {
+                        warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+                    }
+                    var div = document.createElement('div');
+                    div.innerHTML = msg;
+                    warningBanner.appendChild(div);
+                    if (type == 'error') div.style = 'background: red; padding: 10px;';
+                    else {
+                        if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+                        setTimeout(function () {
+                            warningBanner.removeChild(div);
+                            updateBannerVisibility();
+                        }, 5000);
+                    }
+                    updateBannerVisibility();
+                }
+
+                const config = {
+                    arguments: [],
+                    dataUrl: "Build/Biology_Build_WebGL.data",
+                    frameworkUrl: "Build/Biology_Build_WebGL.framework.js",
+                    codeUrl: "Build/Biology_Build_WebGL.wasm",
+                    streamingAssetsUrl: "StreamingAssets",
+                    companyName: "DefaultCompany",
+                    productName: "Biology",
+                    productVersion: "0.1",
+                    showBanner: unityShowBanner,
+                };
+
+                const script = document.createElement("script");
+                script.src = "Build/Biology_Build_WebGL.loader.js";
+                script.onload = () => {
+                    createUnityInstance(canvas, config, (progress) => {
+                        progressBarFull.style.width = 100 * progress + "%";
+                    }).then((unityInstance) => {
+                        loadingBar.style.display = "none";
+                        fullscreenButton.onclick = () => unityInstance.SetFullscreen(1);
+                    }).catch((message) => {
+                        alert(message);
+                    });
+                };
+                document.body.appendChild(script);
+            })();
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+            integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+            crossorigin="anonymous"></script>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+
+        <script src="./js/mediumish.js"></script>
+
+
+
+        <script src="./js/ie10-viewport-bug-workaround.js"></script>
+
+
+
+        <script type="text/javascript"
+            src="/test/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=455243737" async></script>
     </div>
-    <script>
-        (function () {
-            const container = document.querySelector("#unity-container");
-            const canvas = document.querySelector("#unity-canvas");
-            const loadingBar = document.querySelector("#unity-loading-bar");
-            const progressBarFull = document.querySelector("#unity-progress-bar-full");
-            const fullscreenButton = document.querySelector("#unity-fullscreen-button");
-            const warningBanner = document.querySelector("#unity-warning");
 
-            function unityShowBanner(msg, type) {
-                function updateBannerVisibility() {
-                    warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-                }
-                var div = document.createElement('div');
-                div.innerHTML = msg;
-                warningBanner.appendChild(div);
-                if (type == 'error') div.style = 'background: red; padding: 10px;';
-                else {
-                    if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-                    setTimeout(function () {
-                        warningBanner.removeChild(div);
-                        updateBannerVisibility();
-                    }, 5000);
-                }
-                updateBannerVisibility();
-            }
-
-            const config = {
-                arguments: [],
-                dataUrl: "Build/Biology_Build_WebGL.data",
-                frameworkUrl: "Build/Biology_Build_WebGL.framework.js",
-                codeUrl: "Build/Biology_Build_WebGL.wasm",
-                streamingAssetsUrl: "StreamingAssets",
-                companyName: "DefaultCompany",
-                productName: "Biology",
-                productVersion: "0.1",
-                showBanner: unityShowBanner,
-            };
-
-            const script = document.createElement("script");
-            script.src = "Build/Biology_Build_WebGL.loader.js";
-            script.onload = () => {
-                createUnityInstance(canvas, config, (progress) => {
-                    progressBarFull.style.width = 100 * progress + "%";
-                }).then((unityInstance) => {
-                    loadingBar.style.display = "none";
-                    fullscreenButton.onclick = () => unityInstance.SetFullscreen(1);
-                }).catch((message) => {
-                    alert(message);
-                });
-            };
-            document.body.appendChild(script);
-        })();
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-        crossorigin="anonymous"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
-
-    <script src="./js/mediumish.js"></script>
-
-
-
-    <script src="./js/ie10-viewport-bug-workaround.js"></script>
-
-
-
-    <script type="text/javascript"
-        src="/test/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=455243737" async></script>
 </body>
 
 </html>
