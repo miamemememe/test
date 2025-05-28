@@ -83,19 +83,19 @@
         }
 
         .item-1 {
-            background-image: url("../images/image_0.png");
+            background-image: url("./images/image_0.png");
         }
 
         .item-2 {
-            background-image: url("../images/image_1.png");
+            background-image: url("./images/image_1.png");
         }
 
         .item-3 {
-            background-image: url("../images/image_2.png");
+            background-image: url("./images/image_2.png");
         }
 
         .item-4 {
-            background-image: url("../images/image_3.png");
+            background-image: url("./images/image_3.png");
         }
 
         /* Unity区块 */
@@ -343,27 +343,13 @@
         (function () {
             const container = document.querySelector("#unity-container");
             const canvas = document.querySelector("#unity-canvas");
-            const loadingBar = document.querySelector("#unity-loading-bar");
             const progressBarFull = document.querySelector("#unity-progress-bar-full");
-            const fullscreenButton = document.querySelector("#unity-fullscreen-button");
-            const warningBanner = document.querySelector("#unity-warning");
 
             function unityShowBanner(msg, type) {
-                function updateBannerVisibility() {
-                    warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-                }
+               
                 var div = document.createElement('div');
                 div.innerHTML = msg;
-                warningBanner.appendChild(div);
-                if (type == 'error') div.style = 'background: red; padding: 10px;';
-                else {
-                    if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-                    setTimeout(function () {
-                        warningBanner.removeChild(div);
-                        updateBannerVisibility();
-                    }, 5000);
-                }
-                updateBannerVisibility();
+               
             }
 
             const config = {
@@ -384,8 +370,6 @@
                 createUnityInstance(canvas, config, (progress) => {
                     progressBarFull.style.width = 100 * progress + "%";
                 }).then((unityInstance) => {
-                    loadingBar.style.display = "none";
-                    fullscreenButton.onclick = () => unityInstance.SetFullscreen(1);
                 }).catch((message) => {
                     alert(message);
                 });
