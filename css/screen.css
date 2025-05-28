@@ -38,11 +38,11 @@
         background-image: url("../images/image_2.png");
     }
 
-    /* .item-4 {
-		background-image: url("../images/image_3.jpg");
-	} */
+    .item-4 {
+		background-image: url("../images/image_3.png");
+	}
 
-    
+   
 }
 
 @media screen and (min-width:1500px) {

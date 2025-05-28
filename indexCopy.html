@@ -7,7 +7,7 @@
 
     <link rel="icon" href="./images/logo.png">
 
-    <title>Home | 叶绿体模型 </title>
+    <title>Home | AAA</title>
     <meta name="generator" content="Jekyll v4.4.1">
     <meta property="og:title" content="Home">
     <meta property="og:locale" content="en_US">
@@ -58,23 +58,10 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style>
-         .title-section {
-            display: block;
-        }
-
-        .unity-section {
-            padding: 40px 0;
-            margin: 60px 0;
-            width: 80%;
-        }
-
         #unity-container {
-            display: block;
-        }
-
-        #gallery {
-            display: block;
-            margin: auto;
+            position: block;
+            margin: 150px 0px 0px 0px;
+            width: 80%;
         }
 
         @media (max-width: 960px) {
@@ -122,14 +109,14 @@
 
                         <a class="nav-link" href="/index.html">HOME</a>
                     </li>
-                    <!-- 
+
                     <li class="nav-item">
                         <a class="nav-link" href="/html/detail.html">Details</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="/html/about.html">About</a>
-                    </li> -->
+                    </li>
 
 
 
@@ -166,79 +153,11 @@
         <div class="container">
 
 
-            <div class="title-section">
-                <div class="mainheading">
-                    <h1 class="sitetitle">未来教育</h1>
-                    <p class="lead">
-                        生物模型
-                    </p>
-                </div>
-            </div>
-            <div class="unity-section">
-                <div id="unity-container" class="unity-desktop">
-                    <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
-                    <div id="unity-loading-bar">
-                        <div id="unity-logo"></div>
-                        <div id="unity-progress-bar-empty">
-                            <div id="unity-progress-bar-full"></div>
-                        </div>
-                    </div>
-                    <div id="unity-warning"></div>
-                </div>
-                <script>
-                    (function () {
-                        const container = document.querySelector("#unity-container");
-                        const canvas = document.querySelector("#unity-canvas");
-                        const loadingBar = document.querySelector("#unity-loading-bar");
-                        const progressBarFull = document.querySelector("#unity-progress-bar-full");
-                        const fullscreenButton = document.querySelector("#unity-fullscreen-button");
-                        const warningBanner = document.querySelector("#unity-warning");
-
-                        function unityShowBanner(msg, type) {
-                            function updateBannerVisibility() {
-                                warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-                            }
-                            var div = document.createElement('div');
-                            div.innerHTML = msg;
-                            warningBanner.appendChild(div);
-                            if (type == 'error') div.style = 'background: red; padding: 10px;';
-                            else {
-                                if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-                                setTimeout(function () {
-                                    warningBanner.removeChild(div);
-                                    updateBannerVisibility();
-                                }, 5000);
-                            }
-                            updateBannerVisibility();
-                        }
-
-                        const config = {
-                            arguments: [],
-                            dataUrl: "Build/Biology_Build_WebGL.data",
-                            frameworkUrl: "Build/Biology_Build_WebGL.framework.js",
-                            codeUrl: "Build/Biology_Build_WebGL.wasm",
-                            streamingAssetsUrl: "StreamingAssets",
-                            companyName: "DefaultCompany",
-                            productName: "Biology",
-                            productVersion: "0.1",
-                            showBanner: unityShowBanner,
-                        };
-
-                        const script = document.createElement("script");
-                        script.src = "Build/Biology_Build_WebGL.loader.js";
-                        script.onload = () => {
-                            createUnityInstance(canvas, config, (progress) => {
-                                progressBarFull.style.width = 100 * progress + "%";
-                            }).then((unityInstance) => {
-                                loadingBar.style.display = "none";
-                                fullscreenButton.onclick = () => unityInstance.SetFullscreen(1);
-                            }).catch((message) => {
-                                alert(message);
-                            });
-                        };
-                        document.body.appendChild(script);
-                    })();
-                </script>
+            <div class="mainheading">
+                <h1 class="sitetitle">未来教育</h1>
+                <p class="lead">
+                    生物模型
+                </p>
             </div>
 
             <div class="main-content">
@@ -428,7 +347,70 @@
         <script type="text/javascript"
             src="/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=455243737" async></script>
     </div>
+    <div id="unity-container" class="unity-desktop">
+        <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+        <div id="unity-loading-bar">
+            <div id="unity-logo"></div>
+            <div id="unity-progress-bar-empty">
+                <div id="unity-progress-bar-full"></div>
+            </div>
+        </div>
+        <div id="unity-warning"></div>
+    </div>
+    <script>
+        (function () {
+            const container = document.querySelector("#unity-container");
+            const canvas = document.querySelector("#unity-canvas");
+            const loadingBar = document.querySelector("#unity-loading-bar");
+            const progressBarFull = document.querySelector("#unity-progress-bar-full");
+            const fullscreenButton = document.querySelector("#unity-fullscreen-button");
+            const warningBanner = document.querySelector("#unity-warning");
 
+            function unityShowBanner(msg, type) {
+                function updateBannerVisibility() {
+                    warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+                }
+                var div = document.createElement('div');
+                div.innerHTML = msg;
+                warningBanner.appendChild(div);
+                if (type == 'error') div.style = 'background: red; padding: 10px;';
+                else {
+                    if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+                    setTimeout(function () {
+                        warningBanner.removeChild(div);
+                        updateBannerVisibility();
+                    }, 5000);
+                }
+                updateBannerVisibility();
+            }
+
+            const config = {
+                arguments: [],
+                dataUrl: "Build/Biology_Build_WebGL.data",
+                frameworkUrl: "Build/Biology_Build_WebGL.framework.js",
+                codeUrl: "Build/Biology_Build_WebGL.wasm",
+                streamingAssetsUrl: "StreamingAssets",
+                companyName: "DefaultCompany",
+                productName: "Biology",
+                productVersion: "0.1",
+                showBanner: unityShowBanner,
+            };
+
+            const script = document.createElement("script");
+            script.src = "Build/Biology_Build_WebGL.loader.js";
+            script.onload = () => {
+                createUnityInstance(canvas, config, (progress) => {
+                    progressBarFull.style.width = 100 * progress + "%";
+                }).then((unityInstance) => {
+                    loadingBar.style.display = "none";
+                    fullscreenButton.onclick = () => unityInstance.SetFullscreen(1);
+                }).catch((message) => {
+                    alert(message);
+                });
+            };
+            document.body.appendChild(script);
+        })();
+    </script>
 </body>
 
 </html>
